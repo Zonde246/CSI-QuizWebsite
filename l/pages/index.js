@@ -39,8 +39,8 @@ export default function Page() {
           <span className="text-accent">Quizlet</span> is a place where you can
           learn and share knowledge.
         </h3>
-        <div className="h-1/4 w-full flex justify-center items-center gap-8">
-          <Box Link={"Login"}>
+        <div className="h-1/4 w-full flex justify-center items-center">
+          <Box>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -54,7 +54,7 @@ export default function Page() {
               <h5>Already a user? Login here.</h5>
             </span>
           </Box>
-          <Box Link={"Register"}>
+          <Box>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -68,10 +68,7 @@ export default function Page() {
               <h5>New to the site, Amigo? Sign up Right now</h5>
             </span>
           </Box>
-          <Box
-            Link={"https://github.com/Zonde246/CSI-QuizWebsite"}
-            Absolute={true}
-          >
+          <Box>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
