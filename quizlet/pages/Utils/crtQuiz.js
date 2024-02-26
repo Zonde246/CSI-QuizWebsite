@@ -1,5 +1,3 @@
-import Form from "@/Components/Form/Form";
-
 export const getServerSideProps = async ({ req }) => {
   const { token } = req.cookies;
 
@@ -13,12 +11,11 @@ export const getServerSideProps = async ({ req }) => {
       },
     };
   }
-
   return {
     props: {},
   };
 };
 
-export default function Login() {
-  return <Form Log={true} />;
+export default function QuizCreator() {
+  return <></>;
 }

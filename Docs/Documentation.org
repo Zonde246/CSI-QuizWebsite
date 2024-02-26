@@ -1,0 +1,16 @@
+#+title: _Quizlet Documentation and Tracker Board_
+#+author: ZonDe
+#+email: parikshieth@proton.me
+#+OPTIONS: p:t
+#+TODOCOLOR: #B63400
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+HTML_HEAD_EXTRA: <style> pre.src { background-color: #292929; color: white; } .TODO { background-color: #807B6B; } #content {width : 55%; max-width: 75%;} .YES {background-color: green;} .NO {background-color : crimson;}</style>
+
+
+* _Some Precursor things_
+** What is Quizlet?
+Quizlet is a website made to share quizzes between people with ease.
+** Why is Quizlet?
+Quizlet is made as a project to showcase my expirience and knowledge with [[https://react.dev][React]] , [[https://nextjs.org][NextJS]] and [[https://mongodb.com][Mongodb]]
+
+** How is Quizlet made?

@@ -1,6 +1,23 @@
 import Box from "@/Components/Index/Box";
 import { useRef } from "react";
 
+export const getServerSideProps = async ({ req }) => {
+  const { token } = req.cookies;
+
+  if (token) {
+    return {
+      redirect: {
+        destination: "/Main",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
+
 export default function Page() {
   const Intro = useRef(null);
   return (

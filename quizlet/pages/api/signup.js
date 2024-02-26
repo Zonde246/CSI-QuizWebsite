@@ -1,7 +1,6 @@
 import { users } from "@/mongod/mongod";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import { setCookie } from "cookies-next";
 
 mongoose.connect("mongodb://localhost:27017/Quizlet");
 
