@@ -1,21 +1,13 @@
-import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const [userData, SetuserData] = useState({});
-  useEffect(() => {
-    SetuserData(getCookie("token"));
-  }, []);
-  console.log(userData);
-
   return (
-    <nav className="h-16 w-full bg-indigo-500 z-50 absolute top-0 flex">
-      <NavButton Redirect={"Utils/PopQs"}>Popular Quizzes</NavButton>
-      <NavButton Redirect={"Utils/NewQs"}>New Quizes</NavButton>
-      <NavButton Redirect={"Utils/PrimSearch"}>Search by user</NavButton>
-      <NavButton Redirect={"Utils/CrtQuiz"}>Create a Quiz</NavButton>
-      <NavButton>View your account</NavButton>
+    <nav className="h-16 w-full bg-indigo-500 z-50  flex">
+      <NavButton Redirect={"/Utils/PopQs"}>Popular Quizzes</NavButton>
+      {/* <NavButton Redirect={"Utils/NewQs"}>New Quizes</NavButton> */}{" "}
+      {/* Scrapped due to time constraints */}
+      <NavButton Redirect={"/Utils/PrimSearch"}>Search by user</NavButton>
+      <NavButton Redirect={"/Utils/CrtQuiz"}>Create a Quiz</NavButton>
     </nav>
   );
 }
@@ -24,8 +16,8 @@ export function NavButton({ children, Redirect }) {
   const router = useRouter();
   return (
     <div
-      className="h-16 w-1/4 relative flex justify-center items-center transition-all hover:-translate-y-1 hover:text-accent"
-      onClick={() => router.push(`./${Redirect}`)}
+      className="h-16 w-full relative flex justify-center items-center transition-all hover:-translate-y-1 hover:text-accent"
+      onClick={() => router.push(`/${Redirect}`)}
     >
       {children}
     </div>

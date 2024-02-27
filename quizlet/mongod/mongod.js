@@ -12,11 +12,14 @@ export const users =
   });
 
 export const Quizes =
-  mongoose.models["Quizes"] ||
-  mongoose.model("Quizes", {
+  mongoose.models["quizes"] ||
+  mongoose.model("quizes", {
     QuizID: String,
-    Questions: Array,
-    Answers: Array,
+    Questions: {
+      type: Array,
+      default: [],
+    },
     Creator: String,
+    TimeLimit: Number,
     NoOfTakers: Number,
   });
