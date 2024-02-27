@@ -11,10 +11,10 @@ export default function Navbar() {
 
   return (
     <nav className="h-16 w-full bg-indigo-500 z-50 absolute top-0 flex">
-      <NavButton Redirect={"PopQs"}>Popular Quizzes</NavButton>
-      <NavButton Redirect={"NewQs"}>New Quizes</NavButton>
-      <NavButton Redirect={"PrimSearch"}>Search by user</NavButton>
-      <NavButton Redirect={"CrtQuiz"}>Create a Quiz</NavButton>
+      <NavButton Redirect={"Utils/PopQs"}>Popular Quizzes</NavButton>
+      <NavButton Redirect={"Utils/NewQs"}>New Quizes</NavButton>
+      <NavButton Redirect={"Utils/PrimSearch"}>Search by user</NavButton>
+      <NavButton Redirect={"Utils/CrtQuiz"}>Create a Quiz</NavButton>
       <NavButton>View your account</NavButton>
     </nav>
   );

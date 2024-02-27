@@ -10,3 +10,13 @@ export const users =
     QuizIDs: Array,
     NoOfQuizes: Number,
   });
+
+export const Quizes =
+  mongoose.models["Quizes"] ||
+  mongoose.model("Quizes", {
+    QuizID: String,
+    Questions: Array,
+    Answers: Array,
+    Creator: String,
+    NoOfTakers: Number,
+  });
