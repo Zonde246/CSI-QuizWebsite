@@ -1,22 +1,37 @@
 import Navbar from "@/Components/Misc/Navbar";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
-export const getServerSideProps = async (context) => {
-  const Data = await fetch("/api/utils/GetQs", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({}),
-  }).then((res) => res.json());
-  console.log(Data);
+// export const getServerSideProps = async (context) => {
+//   const Data = await fetch("/api/utils/GetQs", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({}),
+//   }).then((res) => res.json());
+//   console.log(Data);
 
-  return {
-    props: { Data: Data }, // will be passed to the page component as props
-  };
-};
+//   return {
+//     props: { Data: Data }, // will be passed to the page component as props
+//   };
+// };
 
-export default function PopQs({ Data }) {
+export default function PopQs() {
+  const [Data, setData] = useState([]);
+  useEffect(() => {
+    fetch("/api/utils/GetQs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
   const router = useRouter();
   return (
     <div className="h-svh w-full absolute">
