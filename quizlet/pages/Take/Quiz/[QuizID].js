@@ -39,6 +39,8 @@ export default function Quiz() {
         },
         body: JSON.stringify({}),
       });
+      const data = await res.json();
+      setData(data);
     }
     fetchData();
   }, []);
