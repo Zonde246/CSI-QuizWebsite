@@ -34,6 +34,7 @@ export default function Quiz({ Data }) {
       ImportantData.splice(ImportantData.indexOf(element), 1);
     }
   });
+  ImportantData.shift();
   // console.log(ImportantData.shift());
   const [Questions, setQuestions] = useState(ImportantData);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -51,38 +52,42 @@ export default function Quiz({ Data }) {
             : "hidden"
         }
       >
-        {Questions.map((question, index) => (
-          // console.log(question, index, CurrentQ),
-          <div
-            key={index}
-            className={
-              CurrentQ == index
-                ? "flex flex-col justify-center items-center w-full h-1/2"
-                : "hidden"
-            }
-          >
-            <h1>Question : {question.question}</h1>
-            <div
-              className={
-                "flex flex-col justify-center items-center w-full h-svh"
-              }
-            >
-              {question.options.map((option, index) => (
-                <label
-                  key={index}
+        {Questions.map(
+          (question, index) => (
+            console.log(question, index, CurrentQ),
+            (
+              <div
+                key={index}
+                className={
+                  CurrentQ == index
+                    ? "flex flex-col justify-center items-center w-full h-1/2"
+                    : "hidden"
+                }
+              >
+                <h1>Question : {question.question}</h1>
+                <div
                   className={
-                    choseOption == index
-                      ? "bg-primary text-red-600 p-2 m-2 w-1/4 text-center translate-x-4 transition-all duration-500"
-                      : "bg-white text-black p-2 m-2 w-1/4 text-center transition-all duration-500"
+                    "flex flex-col justify-center items-center w-full h-svh"
                   }
-                  onClick={() => setChoseOption(index)}
                 >
-                  <h3>{option}</h3>
-                </label>
-              ))}
-            </div>
-          </div>
-        ))}
+                  {question.options.map((option, index) => (
+                    <label
+                      key={index}
+                      className={
+                        choseOption == index
+                          ? "bg-primary text-red-600 p-2 m-2 w-1/4 text-center translate-x-4 transition-all duration-500"
+                          : "bg-white text-black p-2 m-2 w-1/4 text-center transition-all duration-500"
+                      }
+                      onClick={() => setChoseOption(index)}
+                    >
+                      <h3>{option}</h3>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )
+          )
+        )}
         <button
           type="button"
           onClick={() => {
