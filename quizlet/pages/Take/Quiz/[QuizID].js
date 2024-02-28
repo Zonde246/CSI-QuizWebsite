@@ -29,24 +29,32 @@ export function Timer({ Time, setFin }) {
 }
 
 export default function Quiz() {
-  const [Data, setData] = useState({});
+  const [Data, setData] = useState(null);
   const router = useRouter();
+
+  const url = router.asPath.split("/")[3];
+  // console.log(url.split("/")[3]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(`/api/Load/${router.query.QuizID}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({}),
-      });
-      const data = await res.json();
-      setData(data);
+      if (router.isReady == false) {
+      } else {
+        const res = await fetch(`/api/Load/ID`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ID: url,
+          }),
+        });
+        const data = await res.json();
+        setData(data);
+      }
     }
     fetchData();
-  }, [router.query.QuizID]);
-  if (Object.keys(Data).length == 0) {
+  }, [router.isReady, url]);
+  if (!Data) {
     return <h1>Loading...</h1>;
   }
   return <Module Data={Data} />;
@@ -59,6 +67,7 @@ export function Module({ Data }) {
       ImportantData.splice(ImportantData.indexOf(element), 1);
     }
   });
+  ImportantData.shift();
   // console.log(ImportantData.shift());
   const [Questions, setQuestions] = useState(ImportantData);
   const [userAnswers, setUserAnswers] = useState([]);
