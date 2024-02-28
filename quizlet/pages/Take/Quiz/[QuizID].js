@@ -29,7 +29,7 @@ export function Timer({ Time, setFin }) {
 
 export default function Quiz() {
   const [Data, setData] = useState({});
-  
+
   useEffect(() => {
     fetch(`/api/Load/${params.QuizID}`)
       .then((res) => res.json())
@@ -37,7 +37,13 @@ export default function Quiz() {
         setData(data);
       });
   }, []);
+  if (Object.keys(Data).length == 0) {
+    return <h1>Loading...</h1>;
+  }
+  return <Module Data={Data} />;
+}
 
+export function Module({ Data }) {
   const ImportantData = Object.values(Data.Questions[0]);
   ImportantData.forEach((element) => {
     if (typeof element != "object") {
