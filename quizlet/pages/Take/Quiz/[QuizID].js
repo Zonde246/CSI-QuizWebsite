@@ -31,11 +31,15 @@ export default function Quiz() {
   const [Data, setData] = useState({});
 
   useEffect(() => {
-    fetch(`/api/Load/${params.QuizID}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
+    async function fetchData() {
+      const res = await fetch(`/api/Load/${params.QuizID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
       });
+    }
   }, []);
   if (Object.keys(Data).length == 0) {
     return <h1>Loading...</h1>;
