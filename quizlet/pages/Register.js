@@ -19,6 +19,6 @@ export const getServerSideProps = async ({ req }) => {
   };
 };
 
-export default function Login() {
-  return <Form Log={true} />;
+export default function signup() {
+  return <Form Log={false} />;
 }

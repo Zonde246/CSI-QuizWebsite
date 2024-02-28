@@ -35,6 +35,16 @@
   }
 }
 
+.bg-gif {
+  background-image: url("../public/ShootingStar.gif");
+  background-size: cover;
+  background-position: center;
+
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+  opacity: 1;
+}
 
 body {
   /* font-family: 'Fira Sans'; */
