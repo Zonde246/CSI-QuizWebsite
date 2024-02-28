@@ -40,6 +40,7 @@ export default function Quiz() {
         body: JSON.stringify({}),
       });
     }
+    fetchData();
   }, []);
   if (Object.keys(Data).length == 0) {
     return <h1>Loading...</h1>;
