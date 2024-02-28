@@ -32,11 +32,9 @@ export default function Quiz() {
   const [Data, setData] = useState({});
   const router = useRouter();
 
-  const { params } = router.query;
-
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(`/api/Load/${params.QuizID}`, {
+      const res = await fetch(`/api/Load/${router.query.QuizID}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +45,7 @@ export default function Quiz() {
       setData(data);
     }
     fetchData();
-  }, [params.QuizID]);
+  }, [router.query.QuizID]);
   if (Object.keys(Data).length == 0) {
     return <h1>Loading...</h1>;
   }
