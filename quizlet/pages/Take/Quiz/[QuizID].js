@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 export async function getServerSideProps({ params }) {
-  const Data = await fetch(
-    `http://localhost:3000/api/Load/${params.QuizID}`
-  ).then((res) => res.json());
+  const Data = await fetch(`/api/Load/${params.QuizID}`).then((res) =>
+    res.json()
+  );
   // console.log(Data);
 
   return {
