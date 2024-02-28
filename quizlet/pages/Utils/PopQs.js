@@ -2,9 +2,7 @@ import Navbar from "@/Components/Misc/Navbar";
 import { useRouter } from "next/router";
 
 export const getServerSideProps = async (context) => {
-  const Data = await fetch("http://localhost:3000/api/utils/GetQs").then(
-    (res) => res.json()
-  );
+  const Data = await fetch("/api/utils/GetQs").then((res) => res.json());
   console.log(Data);
 
   return {
