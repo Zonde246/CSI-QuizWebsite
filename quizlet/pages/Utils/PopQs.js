@@ -27,6 +27,7 @@ export default function PopQs({ Data }) {
                 router.push(`/Take/Quiz/${quiz._id}`);
               }}
             >
+              <h3>Title : {quiz.Questions[0].Title}</h3>
               <h3>Creator : {quiz.Creator}</h3>
               <h3>Number of Questions : {quiz.Questions[0].NoQs}</h3>
               <h3>{quiz.NoOfTakers}</h3>

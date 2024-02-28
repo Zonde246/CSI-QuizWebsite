@@ -25,11 +25,12 @@ export const getServerSideProps = async ({ req }) => {
 export default function QuizCreator({ tok }) {
   const [questionData, setQuestionData] = useState({
     NoQs: 1,
+    Title: "",
+    TimeLimit: 1000,
     Question1: {
       question: "",
       options: ["", "", "", ""],
       answer: 0,
-      TimeLimit: 30,
     },
   });
   const [CurrentQ, setCurrentQ] = useState(1);
@@ -81,15 +82,41 @@ export default function QuizCreator({ tok }) {
           <div className="flex justify-center items-center h-full gap-8">
             {!Qview ? (
               <>
-                <label htmlFor="NoQs">Number of Questions</label>
-                <input
-                  type="number"
-                  value={questionData.NoQs}
-                  onChange={(e) =>
-                    setQuestionData({ ...questionData, NoQs: e.target.value })
-                  }
-                  className="text-black text-xl"
-                />
+                <div className="flex flex-col">
+                  <label htmlFor="Title">Title</label>
+                  <input
+                    type="text"
+                    value={questionData.Title}
+                    onChange={(e) =>
+                      setQuestionData({
+                        ...questionData,
+                        Title: e.target.value,
+                      })
+                    }
+                    className="text-black text-xl"
+                  />
+                  <label htmlFor="NoQs">Number of Questions</label>
+                  <input
+                    type="number"
+                    value={questionData.NoQs}
+                    onChange={(e) =>
+                      setQuestionData({ ...questionData, NoQs: e.target.value })
+                    }
+                    className="text-black text-xl"
+                  />
+                  <label htmlFor="Time">Time</label>
+                  <input
+                    type="number"
+                    value={questionData.TimeLimit}
+                    onChange={(e) =>
+                      setQuestionData({
+                        ...questionData,
+                        TimeLimit: e.target.value,
+                      })
+                    }
+                    className="text-black text-xl"
+                  />
+                </div>
                 <button
                   className="h-1/6 w-1/6 bg-secondary hover:bg-purple-300/50 transition-all duration-300 text-black text-2xl"
                   onClick={() => {
@@ -100,7 +127,6 @@ export default function QuizCreator({ tok }) {
                           question: "",
                           options: ["", "", "", ""],
                           answer: 0,
-                          TimeLimit: 30,
                         };
                       }
                     }
@@ -158,26 +184,9 @@ export default function QuizCreator({ tok }) {
                           className="text-black text-xl"
                           required
                         />
-                        {/* Input for settign timelimit */}
                       </div>
                     )
                   )}
-                  <label htmlFor="TimeLimit">Time Limit</label>
-                  <input
-                    type="number"
-                    value={questionData["Question" + CurrentQ].TimeLimit}
-                    onChange={(e) => {
-                      setQuestionData({
-                        ...questionData,
-                        ["Question" + CurrentQ]: {
-                          ...questionData["Question" + CurrentQ],
-                          TimeLimit: e.target.value,
-                        },
-                      });
-                    }}
-                    className="text-black text-xl"
-                    required
-                  />
                   <label htmlFor="answer">Answer</label>
                   <input
                     type="number"

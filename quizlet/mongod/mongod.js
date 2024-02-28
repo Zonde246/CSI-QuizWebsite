@@ -15,11 +15,12 @@ export const Quizes =
   mongoose.models["quizes"] ||
   mongoose.model("quizes", {
     QuizID: String,
+    Title: String,
+    NoOfTakers: Number,
+    TimeLimit: Number,
+    Creator: String,
     Questions: {
       type: Array,
       default: [],
     },
-    Creator: String,
-    TimeLimit: Number,
-    NoOfTakers: Number,
   });

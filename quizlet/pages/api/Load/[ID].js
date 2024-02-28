@@ -8,7 +8,7 @@ export default async function handler(req, res) {
       res.status(200).json(data);
     })
     .then((data) => {
-      res.status(500).json({ error, ok: false });
+      res.status(500).json({ ok: false });
     });
 
   res.status(200).json({ ok: true });

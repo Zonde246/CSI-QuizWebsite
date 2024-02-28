@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   const { questionData, Creator } = req.body;
 
   console.log(Creator);
+  console.log(questionData.Title);
 
   function Generator() {
     let i = 0;
@@ -17,9 +18,10 @@ export default async function handler(req, res) {
 
   try {
     const newQuiz = await new Quizes({
+      Title: questionData.Title,
       QuizID: Creator + Generator(),
       Questions: questionData,
-      Creator: "123",
+      Creator: Creator,
       NoOfTakers: 0,
     });
 
