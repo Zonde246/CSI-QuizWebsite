@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const id = mongoose.Types.ObjectId(req.body.ID);
+  const id = req.body.ID;
 
   const data = await Quizes.findById(id);
   // console.log(data);
