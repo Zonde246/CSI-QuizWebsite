@@ -25,7 +25,7 @@ export default function PrimSearch() {
             .then((data) => {
               setData(data);
               setSearch(true);
-              console.log(data);
+              // console.log(data);
             });
         }}
       >

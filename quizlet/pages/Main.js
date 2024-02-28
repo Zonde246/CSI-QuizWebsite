@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 export const getServerSideProps = async ({ req }) => {
   const { token } = req.cookies;
 
-  // console.log(token);
+  // // console.log(token);
 
   if (!token) {
     return {
