@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 // export async function getServerSideProps({ params }) {
 //   const Data = await fetch(`/api/Load/${params.QuizID}`).then((res) =>
 //     res.json()
@@ -29,6 +30,9 @@ export function Timer({ Time, setFin }) {
 
 export default function Quiz() {
   const [Data, setData] = useState({});
+  const router = useRouter();
+
+  const { params } = router.query;
 
   useEffect(() => {
     async function fetchData() {
@@ -43,7 +47,7 @@ export default function Quiz() {
       setData(data);
     }
     fetchData();
-  }, []);
+  }, [params.QuizID]);
   if (Object.keys(Data).length == 0) {
     return <h1>Loading...</h1>;
   }
