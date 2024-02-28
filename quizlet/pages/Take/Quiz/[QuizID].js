@@ -68,7 +68,7 @@ export function Module({ Data }) {
     }
   });
   ImportantData.shift();
-  // console.log(ImportantData.shift());
+  console.log(ImportantData);
   const [Questions, setQuestions] = useState(ImportantData);
   const [userAnswers, setUserAnswers] = useState([]);
   const [CurrentQ, setCurrentQ] = useState(0);
