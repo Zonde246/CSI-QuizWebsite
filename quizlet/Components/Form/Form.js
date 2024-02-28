@@ -21,7 +21,7 @@ export default function Form({ children, Log = false }) {
       },
       body: JSON.stringify({ name, password }),
     }).then((res) => res.json());
-    // console.log(res);
+    // // console.log(res);
     if (res.error) {
       // * If there is an error, alert the user
       alert(res.error);
@@ -42,7 +42,7 @@ export default function Form({ children, Log = false }) {
       },
       body: JSON.stringify({ name, password }),
     }).then((res) => res.json());
-    // console.log(res);
+    // // console.log(res);
     if (res.error) {
       // * If there is an error, alert the user
       alert(res.error);

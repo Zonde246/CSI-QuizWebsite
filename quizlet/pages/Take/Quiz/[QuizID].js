@@ -3,7 +3,7 @@ export async function getServerSideProps({ params }) {
   const Data = await fetch(
     `http://localhost:3000/api/Load/${params.QuizID}`
   ).then((res) => res.json());
-  console.log(Data);
+  // console.log(Data);
 
   return {
     props: { Data: Data }, // will be passed to the page component as props
@@ -34,7 +34,7 @@ export default function Quiz({ Data }) {
       ImportantData.splice(ImportantData.indexOf(element), 1);
     }
   });
-  console.log(ImportantData.shift());
+  // console.log(ImportantData.shift());
   const [Questions, setQuestions] = useState(ImportantData);
   const [userAnswers, setUserAnswers] = useState([]);
   const [CurrentQ, setCurrentQ] = useState(0);
@@ -51,49 +51,45 @@ export default function Quiz({ Data }) {
             : "hidden"
         }
       >
-        {Questions.map(
-          (question, index) => (
-            console.log(question, index, CurrentQ),
-            (
-              <div
-                key={index}
-                className={
-                  CurrentQ == index
-                    ? "flex flex-col justify-center items-center w-full h-1/2"
-                    : "hidden"
-                }
-              >
-                <h1>Question : {question.question}</h1>
-                <div
+        {Questions.map((question, index) => (
+          // console.log(question, index, CurrentQ),
+          <div
+            key={index}
+            className={
+              CurrentQ == index
+                ? "flex flex-col justify-center items-center w-full h-1/2"
+                : "hidden"
+            }
+          >
+            <h1>Question : {question.question}</h1>
+            <div
+              className={
+                "flex flex-col justify-center items-center w-full h-svh"
+              }
+            >
+              {question.options.map((option, index) => (
+                <label
+                  key={index}
                   className={
-                    "flex flex-col justify-center items-center w-full h-svh"
+                    choseOption == index
+                      ? "bg-primary text-red-600 p-2 m-2 w-1/4 text-center translate-x-4 transition-all duration-500"
+                      : "bg-white text-black p-2 m-2 w-1/4 text-center transition-all duration-500"
                   }
+                  onClick={() => setChoseOption(index)}
                 >
-                  {question.options.map((option, index) => (
-                    <label
-                      key={index}
-                      className={
-                        choseOption == index
-                          ? "bg-primary text-red-600 p-2 m-2 w-1/4 text-center translate-x-4 transition-all duration-500"
-                          : "bg-white text-black p-2 m-2 w-1/4 text-center transition-all duration-500"
-                      }
-                      onClick={() => setChoseOption(index)}
-                    >
-                      <h3>{option}</h3>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )
-          )
-        )}
+                  <h3>{option}</h3>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
         <button
           type="button"
           onClick={() => {
             let temp = userAnswers;
             temp[CurrentQ] = choseOption;
             setUserAnswers(temp);
-            console.log(userAnswers);
+            // console.log(userAnswers);
             setChoseOption(-1);
             setCurrentQ(CurrentQ + 1);
           }}
@@ -109,7 +105,7 @@ export default function Quiz({ Data }) {
             let temp = userAnswers;
             temp[CurrentQ] = choseOption;
             setUserAnswers(temp);
-            console.log(userAnswers);
+            // console.log(userAnswers);
             setFin(true);
           }}
           className={CurrentQ == Questions.length - 1 ? "" : "hidden"}

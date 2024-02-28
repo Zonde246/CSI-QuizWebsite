@@ -3,7 +3,7 @@ import Form from "@/Components/Form/Form";
 export const getServerSideProps = async ({ req }) => {
   const { token } = req.cookies;
 
-  // console.log(token);
+  // // console.log(token);
 
   if (token) {
     return {

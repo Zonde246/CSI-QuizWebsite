@@ -5,7 +5,7 @@ export const getServerSideProps = async (context) => {
   const Data = await fetch("http://localhost:3000/api/utils/GetQs").then(
     (res) => res.json()
   );
-  console.log(Data);
+  // console.log(Data);
 
   return {
     props: { Data: Data }, // will be passed to the page component as props
