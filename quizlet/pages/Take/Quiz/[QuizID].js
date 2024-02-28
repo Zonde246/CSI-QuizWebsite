@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-export async function getServerSideProps({ params }) {
-  const Data = await fetch(`/api/Load/${params.QuizID}`).then((res) =>
-    res.json()
-  );
-  // console.log(Data);
+// export async function getServerSideProps({ params }) {
+//   const Data = await fetch(`/api/Load/${params.QuizID}`).then((res) =>
+//     res.json()
+//   );
+//   // console.log(Data);
 
-  return {
-    props: { Data: Data }, // will be passed to the page component as props
-  };
-}
+//   return {
+//     props: { Data: Data }, // will be passed to the page component as props
+//   };
+// }
 
 export function Timer({ Time, setFin }) {
   const [time, setTime] = useState(Time);
@@ -27,7 +27,17 @@ export function Timer({ Time, setFin }) {
   );
 }
 
-export default function Quiz({ Data }) {
+export default function Quiz() {
+  const [Data, setData] = useState({});
+  
+  useEffect(() => {
+    fetch(`/api/Load/${params.QuizID}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
+
   const ImportantData = Object.values(Data.Questions[0]);
   ImportantData.forEach((element) => {
     if (typeof element != "object") {
