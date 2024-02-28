@@ -3,8 +3,8 @@ import { Quizes } from "@/mongod/mongod";
 export default async function handler(req, res) {
   const { questionData, Creator } = req.body;
 
-  console.log(Creator);
-  console.log(questionData.Title);
+  // console.log(Creator);
+  // console.log(questionData.Title);
 
   function Generator() {
     let i = 0;

@@ -5,7 +5,7 @@ import { useState } from "react";
 export const getServerSideProps = async ({ req }) => {
   const { token } = req.cookies;
 
-  // console.log(JSON.parse(token));
+  // // console.log(JSON.parse(token));
 
   if (!token) {
     return {
@@ -52,7 +52,7 @@ export default function QuizCreator({ tok }) {
   async function handleSubmit(e) {
     e.preventDefault();
     if (isValid()) {
-      console.log(questionData);
+      // console.log(questionData);
       const res = await fetch("/api/utils/createQuiz", {
         method: "POST",
         headers: {

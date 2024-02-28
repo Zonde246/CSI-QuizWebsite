@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://localhost:27017/Quizlet");
+mongoose.connect(process.env.MONGODB_URI);
 
 export const users =
   mongoose.models["users"] ||

@@ -1,8 +1,5 @@
 import { users } from "@/mongod/mongod";
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-
-mongoose.connect("mongodb://localhost:27017/Quizlet");
 
 // ! Stack overflow answer. I don't know what it does.
 // ! Without the code, Get false-positive error on no response being sent.
