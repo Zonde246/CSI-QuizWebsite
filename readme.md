@@ -8,7 +8,7 @@ As things stand, A manual setup is necessary to run this program locally
 
 ## HOSTED WEBPAGE IS HERE...
 
-Look into the about/Releases section of the github repo for a link
+Look into the about/Deployments section of the github repo for a link
 
 #### _Setup Guide_
 
