@@ -8,7 +8,7 @@ As things stand, A manual setup is necessary to run this program locally
 
 ## HOSTED WEBPAGE IS HERE...
 
-Look into the about/Deployments section of the github repo for a link
+Visit it at [Quizlet](https://csi-quiz-website.vercel.app/)
 
 #### _Setup Guide_
 
