@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-// export async function getServerSideProps({ params }) {
-//   const Data = await fetch(`/api/Load/${params.QuizID}`).then((res) =>
-//     res.json()
-//   );
-//   // console.log(Data);
-
-//   return {
-//     props: { Data: Data }, // will be passed to the page component as props
-//   };
-// }
+import { Quizes } from "@/mongod/mongod";
+export async function getServerSideProps({ params }) {
+  let Data = await Quizes.findOne({ _id: params.QuizID });
+  Data = JSON.parse(JSON.stringify(Data));
+  console.log(Data);
+  return {
+    props: { Data }, // will be passed to the page component as props
+  };
+}
 
 export function Timer({ Time, setFin }) {
   const [time, setTime] = useState(Time);
@@ -28,39 +26,7 @@ export function Timer({ Time, setFin }) {
   );
 }
 
-export default function Quiz() {
-  const [Data, setData] = useState(null);
-  const router = useRouter();
-
-  const url = router.asPath.split("/")[3];
-  // console.log(url.split("/")[3]);
-
-  useEffect(() => {
-    async function fetchData() {
-      if (router.isReady == false) {
-      } else {
-        const res = await fetch(`/api/Load/ID`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ID: url,
-          }),
-        });
-        const data = await res.json();
-        setData(data);
-      }
-    }
-    fetchData();
-  }, [router.isReady, url]);
-  if (!Data) {
-    return <h1>Loading...</h1>;
-  }
-  return <Module Data={Data} />;
-}
-
-export function Module({ Data }) {
+export default function Quiz({ Data }) {
   const ImportantData = Object.values(Data.Questions[0]);
   ImportantData.forEach((element) => {
     if (typeof element != "object") {
