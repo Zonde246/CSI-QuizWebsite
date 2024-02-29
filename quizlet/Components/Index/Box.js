@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 
+// Children is the Raw HTML that will be rendered inside the Box
+// Link is the link to which the Box will redirect
+// Absolute is a boolean to check if the link is an external link
 export default function Box({ children, Link, Absolute = false }) {
+  // Router object for implementing the routing
   const router = useRouter();
   return (
     <div

@@ -1,6 +1,11 @@
 import Box from "@/Components/Index/Box";
 import { useRef } from "react";
 
+// Get server side props
+// Check if the user is logged in
+// if Yes redirect to Main
+// else show the page
+
 export const getServerSideProps = async ({ req }) => {
   const { token } = req.cookies;
 

@@ -2,6 +2,8 @@ import Navbar from "@/Components/Misc/Navbar";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
+// ! Doesnt Work in Production :shrug:
+// ! Probably should use getServerSideProps to directly connect to the database instead of using the API.
 // export const getServerSideProps = async (context) => {
 //   const Data = await fetch("/api/utils/GetQs", {
 //     method: "POST",
@@ -19,6 +21,7 @@ import { useState, useEffect } from "react";
 
 export default function PopQs() {
   const [Data, setData] = useState([]);
+  // * Get all the popular Quizes from the database
   useEffect(() => {
     fetch("/api/utils/GetQs", {
       method: "POST",
@@ -32,6 +35,7 @@ export default function PopQs() {
         setData(data);
       });
   }, []);
+  // * Router
   const router = useRouter();
   return (
     <div className="h-svh w-full absolute">

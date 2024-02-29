@@ -11,17 +11,22 @@ export const config = {
 };
 
 export default function login(req, res) {
+  // * Get data from the request body
   const { name, password } = req.body;
+  // * Check if the name and password are not empty
   if (!name || !password) {
     return res.status(400).json({ error: "Please fill in all fields" });
   }
+  // * Find the user with the name
   users.findOne({ name }).then((user) => {
     if (!user) {
       return res.status(400).json({ error: "User does not exist" });
     } else {
+      // * Compare the password with the hashed password
       bcrypt.compare(password, user.password, (err, result) => {
         if (err) throw err;
         if (result) {
+          // * If the password is correct, set a cookie with the user's name and QuizIDs
           setCookie(
             "token",
             {

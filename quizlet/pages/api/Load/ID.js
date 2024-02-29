@@ -1,12 +1,21 @@
+// ! IMPORTANT
+// ! THIS API ROUTE IS NOT USED IN THE FINAL VERSION
+// ! REPLACED BY GETSERVERSIDEPROPS IN THE PAGES/TAKE/QUIZ/[QuizID].JS FILE
+
 import { Quizes } from "@/mongod/mongod";
 export default async function handler(req, res) {
   // console.log(req.body.ID);
 
-  const id = req.body.ID;
+  // ? Get the ID from the request body
+  // const id = req.body.ID;
 
-  const data = await Quizes.findById(id);
+  // * Find the quiz with the ID
+  // const data = await Quizes.findById(id);
   // console.log(data);
-  res.status(200).json(data);
+  // * Return the data
+  // res.status(200).json(data);
   // res.status(200).json({ ok: true });
-  res.status(500).json({ ok: false });
+
+  //  ! DEPRECATION
+  res.status(200).json({ ok: false, message: "This API route is deprecated" });
 }

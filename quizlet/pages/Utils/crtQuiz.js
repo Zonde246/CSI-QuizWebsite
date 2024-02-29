@@ -2,6 +2,11 @@ import Navbar from "@/Components/Misc/Navbar";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+// * Get server side props
+// * Check if the user is logged in
+// * if Yes show the page
+// * else redirect to index page
+
 export const getServerSideProps = async ({ req }) => {
   const { token } = req.cookies;
 

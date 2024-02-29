@@ -3,17 +3,19 @@ import { Quizes } from "@/mongod/mongod";
 export async function getServerSideProps({ params }) {
   let Data = await Quizes.findOne({ _id: params.QuizID });
   Data = JSON.parse(JSON.stringify(Data));
-  console.log(Data);
+  // console.log(Data);
   return {
-    props: { Data }, // will be passed to the page component as props
+    props: { Data }, // * will be passed to the page component as props
   };
 }
 
+// * Timer Component
 export function Timer({ Time, setFin }) {
   const [time, setTime] = useState(Time);
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(time - 1);
+      // * If the time is 0 End the quiz
       if (time == 0) {
         setFin(true);
         clearInterval(interval);
@@ -27,20 +29,26 @@ export function Timer({ Time, setFin }) {
 }
 
 export default function Quiz({ Data }) {
+  // * Organize the data
   const ImportantData = Object.values(Data.Questions[0]);
   ImportantData.forEach((element) => {
     if (typeof element != "object") {
       ImportantData.splice(ImportantData.indexOf(element), 1);
     }
   });
+  // * Remove the Title from the data
   ImportantData.shift();
-  console.log(ImportantData);
+  // console.log(ImportantData);
+  // * Set the state
+  // * Questions is the array of questions
   const [Questions, setQuestions] = useState(ImportantData);
+  // * UserAnswers is the array of the user answers
   const [userAnswers, setUserAnswers] = useState([]);
+  // * CurrentQ is the current question
   const [CurrentQ, setCurrentQ] = useState(0);
-
+  // * ChoseOption is the option that the user chose. Used to highlight the option
   const [choseOption, setChoseOption] = useState(-1);
-
+  // * Fin is the state of the quiz. If true show the results of the quiz
   const [Fin, setFin] = useState(false);
   return (
     <>

@@ -1,8 +1,12 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 export default function PrimSearch() {
+  // * State
+  // * Data is the Quizes made by X user
   const [data, setData] = useState([]);
+  // * Name is the name of the user
   const [name, setName] = useState("");
+  // * Search is a boolean to check if the user has searched for a user
   const [search, setSearch] = useState(false);
 
   const router = useRouter();
@@ -20,6 +24,7 @@ export default function PrimSearch() {
       />
       <button
         onClick={() => {
+          // * Fetch the data from the server
           fetch("/api/LoadUser/" + document.querySelector("input").value)
             .then((res) => res.json())
             .then((data) => {
